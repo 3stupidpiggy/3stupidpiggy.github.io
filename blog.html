@@ -69,60 +69,35 @@
     <!-- Right column -->
     <div class="md:w-2/3 space-y-10">
 
-      <!-- 学习博客 -->
-      <section id="blog" class="bg-white p-6 rounded-2xl shadow">
-        <h3 class="text-2xl font-semibold mb-6">📝 学习博客</h3>
+      <!-- 学习博客页面 -->
+        <section id="blog" class="bg-white p-6 rounded-2xl shadow">
+        <h3 class="text-2xl font-semibold mb-6">📝 我的全部博客</h3>
         <div id="blog-list" class="grid md:grid-cols-2 gap-6"></div>
-        
-        <!-- 查看更多按钮 -->
-        <div class="text-center mt-6">
-          <a href="blog.html"
-            class="px-4 py-2 bg-indigo-500 text-white rounded-lg shadow hover:bg-indigo-600">
-            查看所有文章 →
-          </a>
-        </div>
-      </section>
+        </section>
 
-      <script>
-        fetch("blogs.json")
-          .then(res => res.json())
-          .then(data => {
-            // 按日期排序（最新的在前面）
-            data.sort((a, b) => new Date(b.date) - new Date(a.date));
-            
-            const blogList = document.getElementById("blog-list");
-            data.slice(0, 2).forEach(blog => {
-              const article = document.createElement("article");
-              article.className = "bg-gray-50 p-4 rounded-xl shadow hover:shadow-md transition";
-              article.innerHTML = `
-                <h4 class="font-bold text-lg mb-2">${blog.title}</h4>
-                <p class="text-gray-600 text-sm leading-relaxed">${blog.desc}</p>
-                <p class="text-gray-400 text-xs mt-1">📅 ${blog.date}</p>
-                <a href="${blog.url}" target="_blank" class="text-indigo-500 mt-3 inline-block">阅读更多 →</a>
-              `;
-              blogList.appendChild(article);
-            });
-          });
-      </script>
+        <script>
+            fetch("blogs.json")
+                .then(res => res.json())
+                .then(data => {
+                // 按日期排序（最新的在前面）
+                data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                const blogList = document.getElementById("blog-list");
+                data.forEach(blog => {
+                    const article = document.createElement("article");
+                    article.className = "bg-gray-50 p-4 rounded-xl shadow hover:shadow-md transition";
+                    article.innerHTML = `
+                    <h4 class="font-bold text-lg mb-2">${blog.title}</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">${blog.desc}</p>
+                    <p class="text-gray-400 text-xs mt-1">📅 ${blog.date}</p>
+                    <a href="${blog.url}" target="_blank" class="text-indigo-500 mt-3 inline-block">阅读更多 →</a>
+                    `;
+                    blogList.appendChild(article);
+                });
+                });
+        </script>
 
 
-
-      <!-- 项目 -->
-      <section id="projects" class="bg-white p-6 rounded-2xl shadow">
-        <h3 class="text-2xl font-semibold mb-6">💻 我的项目</h3>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-gray-50 p-4 rounded-xl shadow hover:shadow-md">
-            <h4 class="font-bold text-lg mb-2">项目 A</h4>
-            <p class="text-gray-600">这是我做的第一个项目，主要用于 XXX。</p>
-            <a href="https://github.com/yourname/projectA" class="text-indigo-500 mt-3 inline-block">查看项目 →</a>
-          </div>
-          <div class="bg-gray-50 p-4 rounded-xl shadow hover:shadow-md">
-            <h4 class="font-bold text-lg mb-2">项目 B</h4>
-            <p class="text-gray-600">第二个项目，解决了 YYY 的问题。</p>
-            <a href="https://github.com/yourname/projectB" class="text-indigo-500 mt-3 inline-block">查看项目 →</a>
-          </div>
-        </div>
-      </section>
 
       <!-- 联系方式 -->
       <section id="contact" class="bg-white p-6 rounded-2xl shadow">
