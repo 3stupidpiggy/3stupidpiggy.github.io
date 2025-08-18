@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的个人主页</title>
+  <title>My Personal Homepage</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -12,14 +12,14 @@
   <!-- Header -->
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold text-indigo-600">我的主页</h1>
+      <h1 class="text-2xl font-bold text-indigo-600">My Homepage</h1>
       <nav>
-        <a href="#about" class="px-3 hover:text-indigo-500">关于我</a>
-        <a href="#education" class="px-3 hover:text-indigo-500">学习经历</a>
-        <a href="#interests" class="px-3 hover:text-indigo-500">兴趣爱好</a>
-        <a href="#blog" class="px-3 hover:text-indigo-500">学习博客</a>
-        <a href="#projects" class="px-3 hover:text-indigo-500">项目</a>
-        <a href="#contact" class="px-3 hover:text-indigo-500">联系我</a>
+        <a href="#about" class="px-3 hover:text-indigo-500">About Me</a>
+        <a href="#education" class="px-3 hover:text-indigo-500">Education</a>
+        <a href="#interests" class="px-3 hover:text-indigo-500">Interests</a>
+        <a href="#blog" class="px-3 hover:text-indigo-500">Blog</a>
+        <a href="#projects" class="px-3 hover:text-indigo-500">Projects</a>
+        <a href="#contact" class="px-3 hover:text-indigo-500">Contact</a>
       </nav>
     </div>
   </header>
@@ -29,39 +29,39 @@
 
     <!-- Left column -->
     <aside class="md:w-1/3 bg-white shadow rounded-2xl p-6 self-start sticky top-24">
-      <!-- 头像 -->
+      <!-- Avatar -->
       <div class="text-center mb-6">
-        <img src="./img/lokixi.jpg" alt="我的头像" class="w-32 h-32 mx-auto rounded-full shadow-lg border-4 border-indigo-200 mb-4">
+        <img src="./img/lokixi.jpg" alt="My Avatar" class="w-32 h-32 mx-auto rounded-full shadow-lg border-4 border-indigo-200 mb-4">
         <h2 class="text-2xl font-bold">QingXiang Zou</h2>
-        <p class="text-gray-600 mt-2">无限进步</p>
+        <p class="text-gray-600 mt-2">Endless Progress</p>
       </div>
 
-      <!-- 关于我 -->
+      <!-- About Me -->
       <section id="about" class="mb-6">
-        <h3 class="text-xl font-semibold mb-2">👤 About me</h3>
+        <h3 class="text-xl font-semibold mb-2">👤 About Me</h3>
         <p class="text-gray-700 text-sm leading-relaxed">
-          我是西南交通大学大四人工智能专业学生，目前正专注于强化学习项目
-          正在追求研究生学位，希望能进入强化学习相关课题组
+          A senior student majoring in AI at SWJTU. 
+          Pursuing a graduate degree and aim to join a research group focusing on RL.
         </p>
       </section>
 
-      <!-- 学习经历 -->
+      <!-- Education -->
       <section id="education">
         <h3 class="text-xl font-semibold mb-2">📖 Education</h3>
         <ul class="space-y-3 text-sm text-gray-700">
           <li>
-            <h4 class="font-bold">本科 - 西南交通大学</h4>
-            <p>主修 人工智能，期间参与 强化学习和自然语言处理 相关项目。</p>
+            <h4 class="font-bold">Bachelor - Southwest Jiaotong University</h4>
+            <p>Major in AI, RL and NLP.</p>
           </li>
         </ul>
       </section>
       
-       <!-- 兴趣爱好 -->
+       <!-- Interests -->
       <section id="interests">
         <h3 class="text-xl font-semibold mb-2">🎯 Interests</h3>
         <ul class="space-y-3 text-sm text-gray-700">
-          <li>除了学习之外，我还喜欢 旅游、动漫、音乐、游戏</li>
-          <li>我认为兴趣是毅力的重要来源。</li>
+          <li>Love traveling, anime, music, and gaming.</li>
+          <li>Step forward with courage.</li>
         </ul>
       </section>
     </aside>
@@ -69,43 +69,41 @@
     <!-- Right column -->
     <div class="md:w-2/3 space-y-10">
 
-      <!-- 学习博客页面 -->
-        <section id="blog" class="bg-white p-6 rounded-2xl shadow">
-        <h3 class="text-2xl font-semibold mb-6">📝 我的全部博客</h3>
+      <!-- Blog Section -->
+      <section id="blog" class="bg-white p-6 rounded-2xl shadow">
+        <h3 class="text-2xl font-semibold mb-6">📝 My Blog</h3>
         <div id="blog-list" class="grid md:grid-cols-2 gap-6"></div>
-        </section>
+      </section>
 
-        <script>
-            fetch("blogs.json")
-                .then(res => res.json())
-                .then(data => {
-                // 按日期排序（最新的在前面）
-                data.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                const blogList = document.getElementById("blog-list");
-                data.forEach(blog => {
-                    const article = document.createElement("article");
-                    article.className = "bg-gray-50 p-4 rounded-xl shadow hover:shadow-md transition";
-                    article.innerHTML = `
-                    <h4 class="font-bold text-lg mb-2">${blog.title}</h4>
-                    <p class="text-gray-600 text-sm leading-relaxed">${blog.desc}</p>
-                    <p class="text-gray-400 text-xs mt-1">📅 ${blog.date}</p>
-                    <a href="${blog.url}" target="_blank" class="text-indigo-500 mt-3 inline-block">阅读更多 →</a>
-                    `;
-                    blogList.appendChild(article);
-                });
-                });
-        </script>
+      <script>
+        fetch("blog/blogs.json")
+          .then(res => res.json())
+          .then(data => {
+            // Sort by date (newest first)
+            data.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            const blogList = document.getElementById("blog-list");
+            data.forEach(blog => {
+              const article = document.createElement("article");
+              article.className = "bg-gray-50 p-4 rounded-xl shadow hover:shadow-md transition";
+              article.innerHTML = `
+                <h4 class="font-bold text-lg mb-2">${blog.title}</h4>
+                <p class="text-gray-600 text-sm leading-relaxed">${blog.desc}</p>
+                <p class="text-gray-400 text-xs mt-1">📅 ${blog.date}</p>
+                <a href="${blog.url}" target="_blank" class="text-indigo-500 mt-3 inline-block">Read more →</a>
+              `;
+              blogList.appendChild(article);
+            });
+          });
+      </script>
 
-
-
-      <!-- 联系方式 -->
+      <!-- Contact -->
       <section id="contact" class="bg-white p-6 rounded-2xl shadow">
-        <h3 class="text-2xl font-semibold mb-4">📬 联系我</h3>
+        <h3 class="text-2xl font-semibold mb-4">📬 Contact Me</h3>
         <ul class="space-y-2 text-lg">
-          <li>📧 邮箱: <a href="mailto:yourname@example.com" class="text-indigo-600">yourname@example.com</a></li>
-          <li>🐙 GitHub: <a href="https://github.com/yourname" class="text-indigo-600">github.com/yourname</a></li>
-          <li>💼 LinkedIn: <a href="https://linkedin.com/in/yourname" class="text-indigo-600">linkedin.com/in/yourname</a></li>
+          <li>Email: <a href="ai_zqx@foxmail.com" class="text-indigo-600">yourname@example.com</a></li>
+          <li> GitHub: <a href="https://github.com/yourname" class="text-indigo-600">github.com/yourname</a></li>
+          <li>LinkedIn/Google Scholar: <a href="Waitting" class="text-indigo-600">linkedin.com/in/yourname</a></li>
         </ul>
       </section>
 
@@ -114,7 +112,7 @@
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-300 text-center py-6 mt-10">
-    <p>© 2025 [你的名字]. Powered by GitHub Pages.</p>
+    <p>© 2025 [Your Name]. Powered by GitHub Pages.</p>
   </footer>
 
 </body>
